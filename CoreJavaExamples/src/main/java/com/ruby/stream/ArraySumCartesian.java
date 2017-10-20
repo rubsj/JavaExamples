@@ -1,9 +1,5 @@
 package com.ruby.stream;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class ArraySumCartesian {
 
 	public static void main(String args[]) {

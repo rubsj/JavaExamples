@@ -1,13 +1,3 @@
-/*
-* Copyright (c) 2017 by Casenet, LLC
-*
-* This file is protected by Federal Copyright Law, with all rights
-* reserved. No part of this file may be reproduced, stored in a
-* retrieval system, translated, transcribed, or transmitted, in any
-* form, or by any means manual, electric, electronic, mechanical,
-* electro-magnetic, chemical, optical, or otherwise, without prior
-* explicit written permission from Casenet, LLC.
-*/
 package com.ruby;
 
 public class Questions1 {
@@ -16,8 +6,9 @@ public class Questions1 {
     }
 
     private static final int c=3;
+
     public void doBusinessLogic(){
-        for(int i=0; i< c+1 ; i++){
+/*        for(int i=0; i< c+1 ; i++){
             if(i==3){
                 execute("this is awesome str");
             }
@@ -27,10 +18,17 @@ public class Questions1 {
             if(i==1){
                 execute("why here");
             }
-        }
+        }*/
+
+
+        execute("why here");
+        execute("this is good str");
+        execute("this is awesome str");
     }
     public static void main(String[] args) {
-         new Questions1().doBusinessLogic();
+
+        new Questions1().doBusinessLogic();
+
     }
 
 }

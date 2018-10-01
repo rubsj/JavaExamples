@@ -2,7 +2,6 @@ package com.ruby.formatting;
 
 import java.text.DecimalFormat;
 import java.text.Format;
-import java.util.Locale;
 
 /***
  *
@@ -36,7 +35,7 @@ public class LakhNumberFormatter {
         String moneyString = formatter.format(amount);
 
         */
-        Format format = com.ibm.icu.text.NumberFormat.getNumberInstance(new Locale("en", "IN"));
+        Format format = null;//com.ibm.icu.text.NumberFormat.getNumberInstance(new Locale("en", "IN"));
         String moneyString = format.format(amount);
         System.out.format("Formatted the input %s to indian form %s %n", amount, moneyString);
         return moneyString;

@@ -1,7 +1,7 @@
 /**
  * Created by rjha on 7/20/2018.
  */
-package com.ruby.datastructure;
+package com.ruby.datastructure.fromZeroToOne;
 
 public class Element<T> {
     private T data;

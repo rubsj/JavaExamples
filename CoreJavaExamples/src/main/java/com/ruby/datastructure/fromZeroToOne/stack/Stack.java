@@ -1,7 +1,9 @@
 /*
  * Created by Ruby Jha on 7/21/2018
  */
-package com.ruby.datastructure;
+package com.ruby.datastructure.fromZeroToOne.stack;
+
+import com.ruby.datastructure.fromZeroToOne.Element;
 
 public class Stack<T> {
     private static int MAX_SIZE = 40;
@@ -31,6 +33,18 @@ public class Stack<T> {
         }
 
         return top.getData();
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public boolean isFull() {
+        return size == MAX_SIZE;
+    }
+
+    public int getSize() {
+        return size;
     }
 }
 

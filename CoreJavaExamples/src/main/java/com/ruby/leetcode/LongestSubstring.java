@@ -84,14 +84,16 @@ public class LongestSubstring {
      */
     public int lengthOfLongestSubstring2(String s) {
         int n = s.length(), ans = 0;
-        Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>(); // current index of character
+        // try to extend the range [i, j]
         for (int i = 0, j = 0; j < n; j++) {
             if (map.containsKey(s.charAt(j))) {
                 i = Math.max(map.get(s.charAt(j)), i);
             }
-
-            map.put(s.charAt(j), j++);
             ans = Math.max(ans, j - i + 1);
+            map.put(s.charAt(j), j+1);
+
+
         }
 
         return ans;
@@ -106,7 +108,7 @@ public class LongestSubstring {
 
             String s = line;
 
-//            int ret = new LongestSubstring().lengthOfLongestSubstring(s);
+         //   int ret = new LongestSubstring().lengthOfLongestSubstring(s);
             int ret = new LongestSubstring().lengthOfLongestSubstring2(s);
 
             String out = String.valueOf(ret);

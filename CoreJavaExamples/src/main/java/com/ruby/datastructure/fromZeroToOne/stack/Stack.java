@@ -24,6 +24,7 @@ public class Stack<T> {
         }
         T popedData = top.getData();
         top = top.getNext();
+        size--;
         return popedData;
     }
 

@@ -30,4 +30,9 @@
 - m union-find operation on a set of N objects
 - lg* mean log to the base 2
 
+### Stacks and Queues
+#### Concepts
+ - Java generics. Explain why Java prohibits generic array creation.
+    * sefew
+
 

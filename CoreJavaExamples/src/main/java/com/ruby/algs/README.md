@@ -34,5 +34,59 @@
 #### Concepts
  - Java generics. Explain why Java prohibits generic array creation.
     * sefew
+    
+### Sorting
+#### Selection Sort
+ - The idea of selection sort, is start out with a unsorted array. And in the ith iteration,
+   we go through the array to try to find the smallest remaining entry. And then we'll swap that with the first entry 
+   in the array and then we know we've got one step done.
+   So the basic selection sort method is to, in the ith iteration, find the smallest remaining entry and to the right of i or bigger 
+   index than i and then swap that with i.
+ - Each time we have to scan through all the remaining entries in order to find the smallest. But then, once we found it, 
+   we only have to swap two cards those are both key properties of selection sort.
+ - Selections or uses about N^2 / 2 compares and exactly n exchanges.
+ - Now, what's interesting about this proposition about selection sort is that, it doesn't matter what order the input is.
+   Selection sort is going to use quadratic time because it always has to go through the whole thing to look for the minimum. 
+ - And another property is that you can't sort moving less data because selection sort does just a linear number of exchanges. 
+   Every item is put in to it's final position with just one exchange. 
+
+#### Insertion Sort
+ - Insertion sort is another elementary method that interestingly has quite  different performance characteristics than selection sort.
+ - Our pointer still scans from left to right, but now the elements to the left of the pointer, including it, are in order, but the elements to the right have not yet been seen at all. So we have to look at the code that's going to maintain that invariant as the pointer increments. Move the pointer to the right, it's incremented again. Now the invariant's broken because the element on the pointer is not in sorted order. To put it in sorted order, we have to move from right to left, exchanging it with every larger elements to its left.
+ - For insertion sort, what we're going to do is we'll move an index i from left to right  in the i'th iteration, we're going to move a[i] into position among the elements to its left. 
+ - we take the idea that everything from i to its left is going to be sorted, and everything from the right we're not going to look at at all.
+   So everything to the left of i is in ascending order, everything to the right, we haven't seen it all yet. 
+ - we exchange as long as the card immediately to the left is greater. And once we've done that, then we have everything to the left by in ascending order.
+ - We don't always have to go all the way back to the beginning.
+ - Performance -
+   - Our proposition says that insertion sort, to sort randomly ordered array with distinct keys, it'll use about one quarter N squared compares, 
+   and about the same number, one quarter N squared exchanges, on the average. 
+   - Since N squared over 4 versus N squared over 2, insertion sort's going to be about twice as fast as selection sort.
+   - Best case  - If the array happens to be already sorted, all insertion sort does is really validate that each element has got smaller elements to its left. So it does no exchanges. It gets the sorting job done with just N minus 1 compares.  it's much, much faster than selection sort, linear instead of quadratic. 
+   - Worst case - if the array is in descending order and has no duplicates, then every element goes all the way back. It makes n squared over 2 compares and n squared over 2 exchanges.  it's slower than selection sort, because it uses about the same number of compares, but it uses many more exchanges. Same kind of dynamic characteristic as selection sort, except, for every step, it's not just comparing, it's also exchanging, which makes it even slower in practice.
+   - Average Case - An inversion is just a pair of keys that are out of order in the array. we define an array to be partially sorted if its number of inversions is linear, if it's less than some constant times N. And what's interesting about insertion sort is that it runs in linear time for partially sorted arrays. 
+     And the proof is, the number of comparisons and the number of exchanges is equal to the number of exchanges equal to the number of inversions, and there's an extra compare for every element except the first. 
+
+
+
+#### Shell Sort  
+- The idea of Shellsort is that Insertion Sort is inefficient because elements really move only one position at the time even when we're kind of know that they have a long way to go. 
+  The idea behind Shellsort is that we'll move entries several positions at a time and the way we're going to do it, it's called h-sorting the array.
+  So, an h-sorted array is h different inter leaves sorted sub-sequences
+- Implement a sorting method that h-sort for decreasing sequences of values of h.
+- We just use Insertion Sort but instead of going one back every time we come with a new item, we go h back.
+- So the code is the same as insertion, as for Insertion Sort, except that when we go backwards through the array we skip by h instead of just by one. That's how we h-sort an array.
+- Now the intuition behind Shellsort and actually the mathematical fact is that if you've got an array that's h-sorted and then you k-sort it for another value k different from h, it's still h-sorted.
+- Knuth when he wrote his books in the 60s proposed the increment sequence 3x + 1.
+- When we're using in Shellsort of course, we find the largest increment less than our file size and then do the sorts for decreasing values of that increment.
+- Performance - we can say that the number of comparison and the worst case is O(N3/2) for the 3x + 1 increments.
+  But actually in practice it's much less than that. The problem is nobody knows an accurate model for describing the number of compares taken by Shellsort for any interesting increment sequence.
+- why we are interested in this algorithm?
+    - It's a simple idea that leads to substantial performance gains. 
+    - It's very useful in practice because it's pretty fast except for very huge arrays.
+    - It's going to beat even the classical sophisticated methods for medium sized arrays. 
+    - And it doesn't take much code.
+    - So, It's often used in embedded systems or in hardware sort type systems because there's so little code involved to implement it.
+           
 
 

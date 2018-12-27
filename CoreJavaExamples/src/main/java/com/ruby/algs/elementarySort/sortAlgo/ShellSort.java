@@ -1,7 +1,7 @@
 /**
  * created by Ruby Jha on 11/29/2018
  */
-package com.ruby.algs.elementarySort;
+package com.ruby.algs.elementarySort.sortAlgo;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;

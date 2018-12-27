@@ -1,7 +1,7 @@
 /**
  * created by Ruby Jha on 11/27/2018
  */
-package com.ruby.algs.elementarySort;
+package com.ruby.algs.elementarySort.sortAlgo;
 
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
@@ -22,6 +22,14 @@ public class InsertionSort {
         int arraySize = items.length;
         for (int i=0 ; i< arraySize ; i++){
             for(int j=i; j>0 && isLess(items[j], items[j-1]); j--){
+                swap(items , j , j-1);
+            }
+        }
+    }
+
+    public void sort(Comparable[] items , int low , int high){
+          for (int i=low ; i< high ; i++){
+            for(int j=i; j>low && isLess(items[j], items[j-1]); j--){
                 swap(items , j , j-1);
             }
         }

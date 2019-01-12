@@ -123,5 +123,95 @@
     - Merge logic same as in previous approach, and role reversal can not be done so copy from dest (final) to src (aux) needs to be done in merge method
     - job done in log N passes. Each pass using about N compares for a total cost of about N log N.       
            
+#### Quick sort
+- the basic idea behind Quicksort is that it does the recursion after it does the work, whereas Mergesort did it before it did the work.
+- Steps for sort
+  - first randomly shuffle the array.
+  - then partition the array, so that's to divide it so that for sum value j the entry a of j is in place in the array.
+  - There's no larger entry to the left of j and no smaller entry to the right of j. 
+  - then we recursively sort the two parts. Sort the left part, sort the right part. 
+  - after those two things are done, the whole thing is sorted. 
+- The idea is to arbitrarily choose the first element to be the partitioning element. Since we shuffled the array, that's our random element from the array. 
+- And then we're going to maintain an I pointer that moves from left to right, and a J pointer that moves from right to left.
+- our method is to move the I pointer from left to right. As long as what we have is less than the partitioning element. 
+- move the j pointer from right to left as long as it points to an item that's greater than the partitioning element.
+- The partitioning elements in between them and they're in the wrong order. So what we want to do is exchange those. And then move on. 
+- So we can just exchange J with our partitioning element.
+- Performace
+  - It gets the sort done in place.
+  - That random shuffle at the beginning is important and needed for guaranteeing performance. 
+  - it's simply just faster than Mergesort. 
+  - in the best case Quick Sort will divide everything exactly in half. And that makes it kind of like Merge Sort. It's about analog in. 
+  - And in the worst case if the random shuffle winds up putting the items exactly in order, then partitioning doesn't, doesn't really do anything except find the smallest, peel off the smallest item. Kind of discover that everything to the 
+    right is greater. That's a bad case. But if we shuffled randomly, it's extremely unlikely to happen. 
+  - So the worst case quick sort is quadratic. So complexity's going to tell us that it's a quadratic algorithm if that's what its worst case is. 
+  - The average case, which is extremely likely for any practical application, is going to be about 1.39 n log n.
+  - So that's more compares than Mergesort uses. But Quicksort is much faster, because it doesn't do much corresponding to each compare. 
+  - It just does the compare and increment a pointer. Whereas, Mergesort has to move the items into and out of the auxiliary array, which is more expensive.
+  - So the random shuffle is a key for good performance in Quicksort. It gives us the guarantee that the worst case is not gonna happen.
+  -  Quicksort is not stable cuz partitioning does one of those long range exchanges that might put a key with equal value over a key another key with the same value.
+  - This is our fastest sorting algorithm, and there's a few ways to make it even faster
+    - First thing is small sub-arrays.Even Quicksort has more overhead than you want for a tiny array, like one of size 
+      two or three or four. So can implement it to cut off to insertion sort for small arrays.
+    - Also you could just not do anything for small arrays, and then do the insertion sorting in one pass at the end.
+    - A second improvement is to, try to estimate the partitioning element to be near the middle, Which on average will be at the middle. 
+    - So one thing that we can do is sample the items, and then take a median of the sample. And that's actually not worth the cost for 
+      enlarged samples, not usually. But for three it's worthwhile. Slightly reduces the number of compares. Increases the number of exchanges 
+      paradoxically, cuz more exchanges are required when the partition is right in the middle. So that'll also improve the running time kby maybe ten%.
+  
+  #### Priority Queue
+  - binary heap is based on the idea of a complete binary tree. 
+  - a binary tree is either empty or it's a node with links to left and right binary trees. 
+  - A complete binary tree is one that's perfectly balanced,except possibly for the bottom level
+  - a complete binary trees to implement priority queues is to first of all associate information with each node. 
+  - We'll put our keys in the nodes. And also we're going to represent it with an array. 
+  - So when we start putting the keys in the nodes, we're going to impose one more condition that's called heap ordering. i.e.  parent's key is going to be no smaller than its children's key, and that's true for every node in the tree. 
+  - The array representation, all we do is we put, we start with indices at 1. It's a little less calculation. That way, we leave a of zero empty. 
+  - And then we just take the nodes in level order. So first we put the root, then we put the two nodes on the first level going left from right, and then all the nodes on the third level going from left to right and so forth. 
+  - in the actual data structure representation,we don't need any links at all, it's just an array. 
+  - The way that we move around the tree is by doing arithmetic on the indices. 
+  - Properties of Heap
+    - 1 is the largest key. 
+    - It's larger than the keys in this two children and they're larger than theirs and so forth, 
+    - use the array indices to move through the tree. 
+    - children of the node at k are 2k and 2k plus 1
+  - swim operation - a node gets promoted to a level where it finally can't be better than its boss,
+    - and if we have a node at index k and we know the heap condition is violated there. As long as we're not at the root and k's parent, k over 2 is less than a of k then we just exchange it with its parent and move up. 
+  - Sink Operation - a node gets demoted to a level where it finally  better than its subordinate,
+    - for a position K,then what we need to worry about is the nodes at 2k and 2k plus one. The first thing to check is find out which one is bigger, it's either 2k or 2k plus one and so set J accordingly. So that's J now is after this statement, is the larger of the two children. And don't forget to check that we're going off the end of the heap. And then if the K is not less than either one of those, then we're done.
+  - we have to check whether the heap condition is violated and exchange it with its parent as long as it's smaller. 
+  - Adding item in Priority Queue - add item at the end of array and then make it swim to balance the heap
+  - Delete item in Priority Queue - swap 1 with last item in array , make the last item null now and make the 1st item sink in the tree
+  - Performance
+    - add and delete ,both operations are guaranteed to happen in log N time. 
+    - advanced data structure called a Fibonacci heap,where inserts are done in constant time and delete max done in log N time, 
+    - Key should be immutable
+  
+  #### Heap Sort
+  -view that array as eventually being a max heap. 
+  - We have to do first is to rearrange the keys in the array to heap order it.
+  - next phase would be to take that heap ordered array and get, get it to be a sorted result in, in place.
+  - So the end result would be like that, with, no keys in the heap, but all the keys in the array in sorted order.
+  - Part of the array is the heap. Part of the array is the sorted sub array. And eventually we bring it down to the whole thing being sorted.
+  - we have the maximum element in the array right at the root, we want that to be at the end so that's what we're going to do and that's what we're going to do is just 
+    put it at the end. We exchange the element at the root with the last element. Pull it off the heap and then balance the heap using sink
+  - Now the next largest element in the array is now at the root of the heap. We're going to do the same thing, exchange it with the last element in the heap.
+  - Performance
+    -You can build a heap from N values in linear time. And then, and then lg N more time.
+    -in place sort with guaranteed analogs and compares. 
+    - in-place sorting algorithm that's guaranteed N lg n? Your answer's going to be Heapsort.    
+    -Heapsort is actually not used that much for a couple of reasons.
+     -  First thing is the inner loop is longer than Quicksorts. 
+     - Like Mergesort there is more things to do in the inner loop. There is that compare are the two children bigger, then compare. So there are two compares that get done at N lg N times. And then there is some that array index arithmetic.
+     - That the references to memory are all over the place when it's a huge array, so it's not a good algorithm for a situation where there's caching which is almost everywhere nowadays.\         
+     - It doesn't have a local reference, like Quicksort does. It's always refers to something that's nearby something else that I just referred to. So if a big block of things comes into memory, there's no more extra costs, whereas Heapsort is going to look far away from the current place as it goes down the tree and that makes it slower in a lot of situations. 
+     - it's not stable, sometimes people choose to use Mergesort in practice because of the stability but Heapsort isnot stable for the usual reason that it does long distance exchanges that might bring items that have equal keys bback out of order. 
+     - 
 
+  
+ 
+
+  
+
+  
 

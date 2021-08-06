@@ -4,8 +4,6 @@ import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
 
-import static jdk.nashorn.internal.objects.NativeArray.push;
-
 /**
  * Created by rjha on 12/29/2016.
  *

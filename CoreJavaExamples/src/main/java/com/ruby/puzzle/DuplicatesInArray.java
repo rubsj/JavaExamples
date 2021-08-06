@@ -35,13 +35,13 @@ public class DuplicatesInArray {
             this.frequency = frequency;
         }
 
-        @Override
+     /*   @Override
         public String toString() {
             return com.google.common.base.Objects.toStringHelper(this)
                     .add("duplicateNum", duplicateNum)
                     .add("frequency", frequency)
                     .toString();
-        }
+        }*/
     }
 
     public List<DuplicatesInArray.Duplicate> findDuplicates(int[] inputArray){

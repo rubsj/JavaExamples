@@ -1,7 +1,5 @@
 package com.ruby.algs.elementarySort.priorityQueue;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -32,7 +30,6 @@ public class MinPriorityQueue<T> implements Iterable<T> {
     private int n;
     private Comparator<T> comparator;
 
-    @NotNull
     @Override
     public Iterator<T> iterator() {
         return new HeapIterator();

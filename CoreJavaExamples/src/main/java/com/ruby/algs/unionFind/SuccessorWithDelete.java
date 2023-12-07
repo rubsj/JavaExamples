@@ -1,7 +1,7 @@
 package com.ruby.algs.unionFind;
 
-import edu.princeton.cs.introcs.StdIn;
-import edu.princeton.cs.introcs.StdOut;
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
 
 /**
  * Successor with delete. Given a set of n integers S={0,1,...,n−1} and a sequence of requests of the following

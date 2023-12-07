@@ -1,6 +1,6 @@
 package com.ruby.algs.unionFind;
 
-import edu.princeton.cs.introcs.StdIn;
+import edu.princeton.cs.algs4.StdIn;
 
 /*
 

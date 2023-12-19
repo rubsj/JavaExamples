@@ -42,11 +42,14 @@ import lombok.ToString;
  * homepage and url consist of  '.' or lower case English letters.
  * At most 5000 calls will be made to visit, back, and forward.
  */
-@ToString
+@ToString(onlyExplicitlyIncluded = true)
 public class BrowserHistory {
+
     BrowserNode head;
+
     BrowserNode tail;
 
+    @ToString.Include
     BrowserNode display;
 
     public BrowserHistory(String homepage) {
@@ -67,8 +70,6 @@ public class BrowserHistory {
         this.display.next = node;
         this.tail.prev = node;
         this.display = node;
-        System.out.printf("currently displayed node is %s %n" , this.display);
-
     }
 
     public String back(int steps) {
@@ -100,11 +101,14 @@ public class BrowserHistory {
         browserHistory.visit("google.com");       // You are in "leetcode.com". Visit "google.com"
         System.out.printf("current browser history is %s %n", browserHistory);
         browserHistory.visit("facebook.com");     // You are in "google.com". Visit "facebook.com"
+        System.out.printf("current browser history is %s %n", browserHistory);
         browserHistory.visit("youtube.com");      // You are in "facebook.com". Visit "youtube.com"
+        System.out.printf("current browser history is %s %n", browserHistory);
         browserHistory.back(1);                   // You are in "youtube.com", move back to "facebook.com" return "facebook.com"
         browserHistory.back(1);                   // You are in "facebook.com", move back to "google.com" return "google.com"
         browserHistory.forward(1);                // You are in "google.com", move forward to "facebook.com" return "facebook.com"
         browserHistory.visit("linkedin.com");     // You are in "facebook.com". Visit "linkedin.com"
+        System.out.printf("current browser history is %s %n", browserHistory);
         browserHistory.forward(2);                // You are in "linkedin.com", you cannot move forward any steps.
         browserHistory.back(2);                   // You are in "linkedin.com", move back two steps to "facebook.com" then to "google.com". return "google.com"
         browserHistory.back(7);                   // You are in "google.com", you can move back only one step to "leetcode.com". return "leetcode.com"
@@ -112,19 +116,17 @@ public class BrowserHistory {
     }
 }
 
+@ToString
 class BrowserNode {
     String url;
+    @ToString.Exclude
     BrowserNode next;
+    @ToString.Exclude
     BrowserNode prev;
 
     public BrowserNode(String url) {
         this.url = url;
         this.next = null;
         this.prev = null;
-    }
-
-    @Override
-    public String toString() {
-        return String.format("Node is %s" , this.url);
     }
 }

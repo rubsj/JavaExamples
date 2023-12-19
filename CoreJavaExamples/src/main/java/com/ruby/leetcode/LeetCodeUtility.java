@@ -1,5 +1,7 @@
 package com.ruby.leetcode;
 
+import lombok.ToString;
+
 public class LeetCodeUtility {
 
     public static int[] stringToIntegerArray(String input) {
@@ -51,4 +53,6 @@ class ListNode {
     ListNode next;
     ListNode(int x) { val = x; }
 }
+
+
 

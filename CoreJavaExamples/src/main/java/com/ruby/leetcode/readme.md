@@ -22,3 +22,7 @@
 - [Fibonacci Number](https://leetcode.com/problems/fibonacci-number/description/)
 - [Climbing Stairs](https://leetcode.com/problems/climbing-stairs/description/)
 - [Min Cost Climbing Stairs](https://leetcode.com/problems/min-cost-climbing-stairs/description/)
+
+##### light bulb points
+- Is there any difference between " ( low + high ) / 2 " and " low + ( high - low ) / 2 "?
+  - yes there is  (a+b/ 2) can lead to error because when a an b are two very big ints their sum can exceed the limit whereas in later case since the number to be added is a small on it will not exceed limit
